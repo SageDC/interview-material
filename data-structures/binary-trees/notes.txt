@@ -1,0 +1,59 @@
+Binary Trees
+
+A tree whose elements have at most 2 children is called a binary search tree.
+
+Trees are a hierarchical data structures.
+
+Vocabulary
+Root - topmost node of a tree
+Children - the nodes directly connected to the bottom of a node
+Parent - the node connected to the top of children
+Leaves - elements with no children
+
+Why trees?
+1. One reason to use trees might be because you want to store information
+   that naturally forms a hierarchy.
+   Ex. The file system on a computer
+2. Trees provide moderate access/search (quicker than linked list and
+   slower than arrays)
+3. Trees provide moderate insertion/deletion (quicker than arrays and
+   slower than unordered linked lists).
+4. Trees don't have an upper limit on number of noes as nodes are linked
+   using pointers.
+
+Main applications:
+    1. Manipulate hierarchical data
+    2. Make information easy to search
+    3. Manipulate sorted lists of data
+    4. As a workflow for compositing digital images for visual effects
+    5. Router algorithms
+    6. Form of a multi-stage decision-making
+
+A Binary Tree node contains the following parts:
+    1. data
+    2. Pointer to left child
+    3. Pointer to right child
+
+Simple structure for binary tree:
+```c++
+    struct node {
+        int data;
+        struct node* left;
+        struct node* right;
+    }
+```
+
+Properties of a Binary Tree
+1. The maximum number of nodes at level 'l' of a binary tree is 2^'l'
+2. The maximum number of nodes in a binary tree of height 'h' is 2^'h' - 1
+3. In a binary tree with N nodes, minimum possible height or the minimum number of levels is log_2 (N+1)
+4. A binary tree with L leaves has at least |log_2 L| + 1
+5. In binary tree where every node has 0 or 2 children , the number of leaf nodes is always one more 
+   than nodes with two children
+
+Types of binary trees:
+- Full binary tree: if every node has 0 or 2 children.
+- Complete binary tree: All levels filled except possibly the last level.
+- Perfect binary tree: all internal nodes have two children and all leaf nodes are at the same level
+- Balanced binary tree: height of the tree is O(logn) where n is number of nodes.
+- Degenerate binary tree: every internal node has one child. Basically a linked list.
