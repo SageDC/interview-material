@@ -57,3 +57,7 @@ Types of binary trees:
 - Perfect binary tree: all internal nodes have two children and all leaf nodes are at the same level
 - Balanced binary tree: height of the tree is O(logn) where n is number of nodes.
 - Degenerate binary tree: every internal node has one child. Basically a linked list.
+
+Insertion in a Binary Tree (Level Order)
+- Do iterative level order traversal of the given tree using queue.
+   - Traverse the tree until you find an empty child node
