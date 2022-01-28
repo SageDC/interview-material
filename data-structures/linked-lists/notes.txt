@@ -217,3 +217,22 @@ Deleting a linked list node at a given position
         temp->next = next;
     }
 ```
+
+Deleting an entire linked list
+```c++
+    /* Function to delete the entire linked list. */
+    void deleteList(Node** head_ref) {
+        /* dereference head_ref to get the real head */
+        Node* current = *head_ref;
+        Node* next = NULL;
+
+        while (current != NULL) {
+            next = current->next;
+            free(current);
+            current = next;
+        }
+
+        /* dereference head_ref to affect the real head back in the caller */
+        *head_ref = NULL;
+    }
+```

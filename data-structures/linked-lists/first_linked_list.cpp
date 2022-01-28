@@ -151,6 +151,22 @@ void delNodeAtPos(Node** head_ref, int position) {
     temp->next = next;
 }
 
+/* Function to delete the entire linked list. */
+void deleteList(Node** head_ref) {
+    /* dereference head_ref to get the real head */
+    Node* current = *head_ref;
+    Node* next = NULL;
+
+    while (current != NULL) {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+
+    /* dereference head_ref to affect the real head back in the caller */
+    *head_ref = NULL;
+}
+
 // this function prints contents of linked list starting from the given node
 void printList(Node *n) {
     while (n != NULL) {
@@ -165,17 +181,18 @@ int main() {
     Node *head = NULL;
 
     // add elements in linked list
-    push(&head, 7);
     push(&head, 1);
-    push(&head, 3);
-    push(&head, 2);
-    push(&head, 8);
+    push(&head, 4);
+    push(&head, 1);
+    push(&head, 12);
+    push(&head, 1);
 
     puts("Created Linked List: ");
     printList(head);
-    delNodeAtPos(&head, 4);
-    puts("\nLinked List after deletion at position 4: ");
-    printList(head);
+
+    puts("\nDeleting linked list");
+    deleteList(&head);
+    cout << "\nLinked list deleted" << endl;
     
     return 0;
 }
