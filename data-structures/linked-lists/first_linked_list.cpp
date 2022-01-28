@@ -109,6 +109,48 @@ void deleteNodeRec(Node*& head, int key) {
     deleteNode(&head->next, key);
 }
 
+/* Given a reference (pointer to pointer) to the head of a list and a position,
+deletes the node at the given position */
+void delNodeAtPos(Node** head_ref, int position) {
+    // if linked list is empty
+    if (*head_ref == NULL) {
+        return;
+    }
+
+    // store head node
+    Node* temp = *head_ref;
+
+    // if head needs to be removed
+    if (position == 0) {
+        // change head
+        *head_ref = temp->next;
+
+        // free old head
+        free(temp);
+        return;
+    }
+
+    // find previous node of the node to be deleted
+    for (int i = 0; temp != NULL && i < position - 1; i++) {
+        temp = temp->next;
+    }
+
+    // if position is more than number of nodes
+    if (temp == NULL || temp->next == NULL) {
+        return;
+    }
+
+    // Node temp->next is the node to be deleted
+    // Store pointer to the next of node to be deleted
+    Node* next = temp->next->next;
+
+    // unlink the node from linked list
+    free(temp->next);
+
+    // unlink the deleted node from list
+    temp->next = next;
+}
+
 // this function prints contents of linked list starting from the given node
 void printList(Node *n) {
     while (n != NULL) {
@@ -123,24 +165,16 @@ int main() {
     Node *head = NULL;
 
     // add elements in linked list
-    push(&head, 10);
-    push(&head, 12);
-    push(&head, 14);
-    push(&head, 15);
+    push(&head, 7);
+    push(&head, 1);
+    push(&head, 3);
+    push(&head, 2);
+    push(&head, 8);
 
     puts("Created Linked List: ");
     printList(head);
-
-    deleteNodeRec(head, 20);
-    puts("\nLinked List after deletion of 20: ");
-    printList(head);
-
-    deleteNodeRec(head, 10);
-    puts("\nLinked List after deletion of 10: ");
-    printList(head);
-
-    deleteNodeRec(head, 14);
-    puts("\nLinked List after deletion of 14: ");
+    delNodeAtPos(&head, 4);
+    puts("\nLinked List after deletion at position 4: ");
     printList(head);
     
     return 0;
