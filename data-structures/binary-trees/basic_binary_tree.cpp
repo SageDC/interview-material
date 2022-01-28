@@ -155,6 +155,55 @@ Node* deletion(struct Node* root, int key) {
     return root;
 }
 
+struct Node* betterDeletion(struct Node* root, int key) {
+    if(root==NULL)
+        return NULL;
+    if(root->left==NULL && root->right==NULL)
+    {
+        if(root->data==key)
+            return NULL;
+        else
+            return root;
+    }
+    Node* key_node=NULL;
+    Node* temp;
+    Node* last;
+    queue<Node*> q;
+    q.push(root);
+    // Do level order traversal to find deepest
+    // node(temp), node to be deleted (key_node)
+      // and parent of deepest node(last)
+    while(!q.empty())
+    {
+        temp=q.front();
+        q.pop();
+        if(temp->data==key)
+            key_node=temp;
+        if(temp->left)
+        {
+            last=temp;//storing the parent node
+            q.push(temp->left);
+        }
+        if(temp->right)
+        {
+            last=temp;// storing the parent node
+            q.push(temp->right);
+        }
+             
+         
+    }
+      if(key_node!=NULL)
+    {
+        key_node->data=temp->data;//replacing key_node's data to deepest node's data
+        if(last->right==temp)
+            last->right=NULL;
+        else
+            last->left=NULL;
+        delete(temp);
+     }
+    return root;
+}
+
 int main() {
     Node* root = createNode(10);
     root->left = createNode(11);
@@ -176,8 +225,15 @@ int main() {
 
     key = 7;
     root = deletion(root, key);
-    
+
     cout << "Inorder traversal after deletion: ";
+    inOrder(root);
+    cout << endl;
+
+    key = 9;
+    root = betterDeletion(root, key);
+
+    cout << "Inorder traversal after better deletion: ";
     inOrder(root);
 
     return 0;

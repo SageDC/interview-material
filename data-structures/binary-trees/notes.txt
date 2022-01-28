@@ -70,3 +70,6 @@ Deletion in a Binary Tree
       we want to delete.
    2. Replace the deepest rightmost node's data with the node to be deleted.
    3. Then delete the deepest rightmost node.
+- the above algorithm will not work if the node to be deleted is the deepest node itself
+   - causes a segmentation fault
+- better delete function in BT code
