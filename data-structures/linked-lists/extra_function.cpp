@@ -16,7 +16,7 @@ void fun1(struct node* head) {
 }
 
 /* head_ref is a double pointer which points to head (or start) pointer 
-  of linked list */
+  of linked list 
 static void reverse(struct node** head_ref)
 {
     struct node* prev   = NULL;
@@ -30,7 +30,7 @@ static void reverse(struct node** head_ref)
         current = next;
     }
     *head_ref = prev;
-}
+}*/
 
 void fun(struct node* start)
 {
