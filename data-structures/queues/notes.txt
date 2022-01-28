@@ -1,0 +1,25 @@
+Queue
+
+Queue is a linear structur which follows a particular order in which the operations are performed.
+- The order is FIFO
+- Ex. A drive through
+
+Stack vs. Queue
+- In a stack we remove the last element that we saw.
+- In a queue we remove the element we least recently seen.
+
+Operations on Queue:
+- Enqueue: removes an item to the queue. If the queue is full, then it is said to be an Overflow Condition
+- Dequeue: removes an item from the queue. The items are popped in the same order in which they are pushed.
+           If the queue is empty, then it is said to be an Underflow Condition.
+- Front: Get the front item from queue.
+- Rear: Get the last item from queue.
+
+Applications:
+- When a resource is shared amount multiple consumers. Ex. CPU scheduling, Disk scheduling.
+- When data is transferred asynchronously (data not necessarily received at the same rate as sent)
+  between two processes. Ex. IO Buffers, Pipes, File IO.
+
+Implementations:
+1. Array - Must keep track of two indices, front and rear.
+2. Linked List
