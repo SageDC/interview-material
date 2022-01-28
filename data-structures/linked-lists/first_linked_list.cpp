@@ -63,6 +63,52 @@ void append(Node** head_ref, int new_data) {
     return;
 }
 
+/* given a reference (pointer to pointer) to the head of a list and a key, deletes the first occurence of key in linked list */
+void deleteNode(Node** head_ref, int key) {
+    // store head node
+    Node* temp = *head_ref;
+    Node* prev = NULL;
+
+    // if head node itself holds the key to be deleted
+    if (temp != NULL && temp->data == key) {
+        *head_ref = temp->next; // changed head
+        delete temp;
+        return;
+    }
+    // else search for the key to be deleted, keep track of the previous node as we need to change prev->next
+    else {
+        while (temp != NULL && temp->data != key) {
+            prev = temp;
+            temp = temp->next;
+        }
+        // If key was not present in linked list
+        if (temp == NULL) {
+            return;
+        }
+        // unlink the node from linked list
+        prev->next = temp->next;
+        // free memory
+        delete temp;
+    }
+}
+
+void deleteNodeRec(Node*& head, int key) {
+    // check if the list is empty or we reached the end of the list
+    if (head == NULL) {
+        cout << "Element not present in the list\n";
+        return;
+    }
+    // if current node is the node to be deleted
+    if (head->data == key) {
+        Node* temp = head;
+        // if its start of the node head then the node points to second node
+        head = head->next;
+        delete(temp);
+        return;
+    }
+    deleteNode(&head->next, key);
+}
+
 // this function prints contents of linked list starting from the given node
 void printList(Node *n) {
     while (n != NULL) {
@@ -76,22 +122,25 @@ int main() {
     /* Start with the empty list */
     Node *head = NULL;
 
-    // Linked list becomes 6->NULL
-    append(&head, 6);
+    // add elements in linked list
+    push(&head, 10);
+    push(&head, 12);
+    push(&head, 14);
+    push(&head, 15);
 
-    // 7 added to beginning: linked list becomes 7->6->NULL
-    push(&head, 7);
+    puts("Created Linked List: ");
+    printList(head);
 
-    // 1 added to beginning: linked list becomes 1->7->6->NULL
-    push(&head, 1);
+    deleteNodeRec(head, 20);
+    puts("\nLinked List after deletion of 20: ");
+    printList(head);
 
-    // 4 inserted at the end: linked list becomes 1->7->6->4->NULL
-    append(&head, 4);
+    deleteNodeRec(head, 10);
+    puts("\nLinked List after deletion of 10: ");
+    printList(head);
 
-    // 8 inserted after 7: linked list becomes 1->7->8->6->4->NULL
-    insertAfter(head->next, 8);
-
-    cout << "Created linked list is: ";
+    deleteNodeRec(head, 14);
+    puts("\nLinked List after deletion of 14: ");
     printList(head);
     
     return 0;
