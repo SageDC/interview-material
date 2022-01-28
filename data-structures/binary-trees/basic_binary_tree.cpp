@@ -67,6 +67,94 @@ void inOrder(Node* temp) {
     inOrder(temp->right);
 }
 
+/* function to delete the given deepest node */
+void deleteDeepest(struct Node* root, struct Node* d_node) {
+    queue<struct Node*> q;
+    q.push(root);
+
+    // do level order traversal until last node
+    struct Node* temp;
+    
+    while(!q.empty()) {
+        temp = q.front();
+        q.pop();
+
+        if(temp == d_node) {
+            temp == NULL;
+            delete(d_node);
+            return;
+        }
+
+        if(temp->right) {
+            if(temp->right == d_node) {
+                temp->right = NULL;
+                delete(d_node);
+                return;
+            }
+            else {
+                q.push(temp->right);
+            }
+        }
+
+        if(temp->left) {
+            if(temp->left == d_node) {
+                temp->left = NULL;
+                delete(d_node);
+                return;
+            }
+            else {
+                q.push(temp->left);
+            }
+        }
+    }
+}
+
+/* function to delete element in binary tree */
+Node* deletion(struct Node* root, int key) {
+    if(root == NULL) {
+        return NULL;
+    }
+
+    if(root->left == NULL && root->right == NULL) {
+        if(root->data == key) {
+            return NULL;
+        }
+        else {
+            return root;
+        }
+    }
+
+    queue<struct Node*> q;
+    q.push(root);
+    struct Node* temp;
+    struct Node* key_node = NULL;
+
+    /* do level order traversal to find deepest node and node to be deleted */
+    while(!q.empty()) {
+        temp = q.front();
+        q.pop();
+
+        if(temp->data == key) {
+            key_node = temp;
+        }
+
+        if(temp->left) {
+            q.push(temp->left);
+        }
+
+        if(temp->right) {
+            q.push(temp->right);
+        }
+    }
+
+    if(key_node != NULL) {
+        int x = temp->data;
+        deleteDeepest(root, temp);
+        key_node->data = x;
+    }
+    return root;
+}
+
 int main() {
     Node* root = createNode(10);
     root->left = createNode(11);
@@ -85,6 +173,12 @@ int main() {
     cout << "Inorder traversal after insertion: ";
     inOrder(root);
     cout << endl;
+
+    key = 7;
+    root = deletion(root, key);
+    
+    cout << "Inorder traversal after deletion: ";
+    inOrder(root);
 
     return 0;
 }

@@ -61,3 +61,12 @@ Types of binary trees:
 Insertion in a Binary Tree (Level Order)
 - Do iterative level order traversal of the given tree using queue.
    - Traverse the tree until you find an empty child node
+
+Deletion in a Binary Tree
+- given a binary tree, delete a node from it by making sure that tree shrinks from the bottom
+- no order among elements, so we replace with the last element
+- algorithms
+   1. Starting at the root, find the deepest and rightmost node in binary tree and node which
+      we want to delete.
+   2. Replace the deepest rightmost node's data with the node to be deleted.
+   3. Then delete the deepest rightmost node.
