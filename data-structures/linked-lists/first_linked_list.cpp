@@ -175,6 +175,26 @@ void printList(Node *n) {
     }
 }
 
+int lengthIter(Node** head_ref) {
+    int count = 0;
+    Node* current = *head_ref;
+    while(current != NULL) {
+        current = current->next;
+        count++;
+    }
+    return count;
+}
+
+int lengthRec(Node** head_ref) {
+    Node* current = *head_ref;
+    if(current == NULL) {
+        return 0;
+    }
+    else {
+        return 1 + lengthRec(&current->next);
+    }
+}
+
 // Program to create a simple linked list with 3 nodes
 int main() {
     /* Start with the empty list */
@@ -190,9 +210,8 @@ int main() {
     puts("Created Linked List: ");
     printList(head);
 
-    puts("\nDeleting linked list");
-    deleteList(&head);
-    cout << "\nLinked list deleted" << endl;
+    int length = lengthRec(&head);
+    cout << "\nLength: " << length << endl;
     
     return 0;
 }
