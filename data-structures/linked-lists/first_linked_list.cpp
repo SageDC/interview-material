@@ -195,6 +195,27 @@ int lengthRec(Node** head_ref) {
     }
 }
 
+bool searchIter(Node* head, int x) {
+    Node* current = head;
+    while(current != NULL) {
+        if(current->data == x) {
+            return true;
+        }
+        current = current->next;
+    }
+    return false;
+}
+
+bool searchRec(Node* head, int x) {
+    if(head == NULL) {
+        return false;
+    }
+    if(head->data == x) {
+        return true;
+    }
+    return searchRec(head->next, x);
+}
+
 // Program to create a simple linked list with 3 nodes
 int main() {
     /* Start with the empty list */
@@ -210,8 +231,7 @@ int main() {
     puts("Created Linked List: ");
     printList(head);
 
-    int length = lengthRec(&head);
-    cout << "\nLength: " << length << endl;
+    searchRec(head, 11) ? cout << "Yes" : cout << "No";
     
     return 0;
 }
