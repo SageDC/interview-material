@@ -22,4 +22,9 @@ Applications:
 
 Implementations:
 1. Array - Must keep track of two indices, front and rear.
+    a. Time complexity: O(1) for all functions
+    b. Memory: O(N)
+    c. Pros: Easy to Implement
+    d. Cons: Static data structure, fixed size. 
 2. Linked List
+    a. Time Complexity: O(1) for all functions
