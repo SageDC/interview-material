@@ -1,0 +1,43 @@
+Linked Lists
+
+Linked Lists are a linear data structure, but elements are not stored at a contiguous location; the elements are linked using pointers.
+
+Why Linked List?
+1.) Dynamic size
+2.) Ease of insertion/deletion
+
+Drawbacks
+1.) Random access is not allowed. Must always begin at the first node.
+2.) Extra mnemory space for a pointer is required with each element of the list.
+3.) Not cache friendly, locality of reference is not present.
+
+Representation
+- Represented by a pointer to the first node of the linked list. 
+- The first node is called the head.
+- If empty, the head points to NULL.
+- Each node:
+    1.) data (can store any type of data)
+    2.) pointer (reference) to the next node (connects one node to another)
+    3.) Example:
+        ```c++
+            class Node {
+                public:
+                    int data;
+                    Node* next;
+            };
+        ```
+
+        ```python
+            # Node class
+            class Node:
+                # Function to initialize the node object
+                def __init__(self, data):
+                    self.data = data # assign data
+                    self.next = None # Initialize next as NULL
+
+            # Linked List class
+            class LinkedList:
+                #Function to initialize the Linked List object
+                def __init__(self):
+                    self.head = None
+        ```
