@@ -1,0 +1,66 @@
+Hash Tables
+
+Time Complexities:
+1. Search - O(1) avg, O(n) in worst case
+
+A good hash function:
+1. Efficiently computable
+2. Should uniformly distribute teh keys (each table position equally likely for each key)
+
+Collision Handling - process that occurs by a key producing the same hash value
+- Chaining: Each cell of a hash table points to a linked list of records that have the same hash function value.
+            Requires additional memory.
+    - Look at drawn implementation of chaining on paper.
+    - Advantages:
+        1. Simple to implement
+        2. Hash table never fills up, we can always add more elements to the chain
+        3. Less sensitive to the hash function or load factors
+        4. It is mostly used when it is unkown how many and how frequently keys may be inserted or deleted.
+    - Disadvantages
+        1. Cache performance of chaining is not good as keys are stored using a linked list. Open Addressing
+           provides better cache performance as everything is stored in the same table.
+        2. Wastage of space (some parts of hash table are never used).
+        3. If the chain becomes long, then search time can become O(n) in the worst case.
+        4. Uses extra space for links
+    - Time Complexity:
+        - m = Number of slots in hash table
+        - n = Number of keys to be inserted in hash table
+        - Load factor alpha = n/m
+        - Expected time to search = O(1 + alpha)
+        - Expected time to delete = O(1 + alpha)
+        - Time to insert = O(1)
+        - Time complexity of search, insert, and delete is O(1) if alpha is O(1)
+    - Data structures for storing chains:
+        a. Linked Lists
+            - Search, Delete, Insert: O(l), l = length of linked Lists
+            - Not cache friendly
+        b. Dynamic Sized Arrays
+            - Search, Delete, Insert: O(l)
+            - Cache friendly
+        c. Self Balancing BST
+            - Search, Delete: O(log(l))
+            - Insert: O(l)
+            - Not cache friendly
+
+- Open Addressing: all elements are stored in the hash table itself. Each table entry contains either an entry or NIL.
+                   When searching for an element, we examine the table slots one by one until the desired element is found
+                   or it is clear that the element is not in the table.
+    1. Insert(k): Keep probing until an empty slot is found. Once an empty slot is found, insert k.
+    2. Search(k): Keep probing unti slot's key doesn't become equal to k or an empty slot is reached.
+    3. Delete(k): If we simply delete a key, then the search may fail. So slots of deleted keys are marked specially as "deleted".
+                  The insert can insert an item in a delted slot, but the search doesn't stop at a deleted slot.
+    - Can be implemented as:
+        1. Linear Probing: Linearly probe for the next slot. The typical gap between two probes is 1.
+            - Challenges:
+                a. Primary Clustering - many consecutive elements form groups and it starts taking time to find a free slot or to search for an element.
+                b. Secondary Clustering - less severe, two records only have the same collision chain if their initial position is the same.
+        2. Quadratic Probing - (Hash(x) + i^2) % m
+        3. Double Hashing - i*hash2(x)
+    - Time Complexity:
+        - m = number of slots in the hash table
+        - n = Number of keys to be inserted in the hash table
+        - Load factor alpha = n/m ( <1 )
+        - Expected time to search/insert.delete < 1/(1 - alpha)
+        - So search, insert, and delete take (1/(1-alpha)) time
+
+Index Mapping - we use the values as the index in a big 
