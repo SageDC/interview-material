@@ -1,0 +1,30 @@
+Gang of Four Design Patterns (Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides):
+1. Creational Design Patterns
+    a. Singleton - ensures only one instance of an object is created
+        - It is used where only a single instance of a class is required to control the action throughout the execution.
+        - Used for logging, driver objects, caching and thread pool, database connections
+        - Implementation:
+            1. It should have only one instance
+                a. Done by providing an instance of the class from the class.
+                b. Make constructor private to prevent access from other classes.
+            2. Instance should be globally accessible
+                a. Each class should be able to use it.
+            3. Java:
+                ```java
+                    // A singleton class should have public visibility so that complete application can use
+                    public class GFG {
+                        // static instance of class globally accessible
+                        public static GFG instance = new GFG();
+                        private GFG() {
+                            // private constructor so that class cannot be instantiated from outside this class
+                        }
+                    }
+                ```
+        - Important points
+            1. Singleton classes can have only one instance and that instance should be globally accessible.
+            2. java.lang.Runtime and java.awt.Desktop are 2 singleton classes provided by JVM.
+            3. Singleton Design Pattern is a type of creational design pattern.
+            4. Outer classes should be prevented to create instance of singleton class.
+    b. Factory - Creates objects without specifying the exact class to create (Creat object without exposing the creation logic to the client).
+2. Structural Design Patterns
+3. Behavior Design Patterns
