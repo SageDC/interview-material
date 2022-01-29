@@ -1,0 +1,93 @@
+Breadth First Search (BFS) is the most commonly used approach to traverse graphs.
+- Begin traversal from a selected node and traverse the graph layer wise thus exploring neighbor nodes
+- You must then move to the next level of nodes.
+- Must traverse the graph breadthwise:
+    1. First move horizontally and visit all nodes of the current layer
+    2. Move to the next layer
+
+Traversing Child Nodes
+- Use a boolean to mark the node after it has been processed
+- Store the nodes on a layer such that you can traverse the corresponding child nodes in a similar order.
+- To make it easy, use a queue to store the node and mark it as visited in the order in which they were
+  inserted in the node i.e. the node that was inserted first will be visited first, and so on.
+
+Pseudocode:
+    BFS(G, s) // Where G is the graph and s is the source node
+        let Q be queue.
+        Q.enqueue(s) // Inserting s in queue until all its nieghbor vertices are marked
+
+        mark s as visited.
+        while(Q is not empty)
+            // Removing that vertex from queue, whose neighbor will be visited now
+            v = Q.dequeue()
+
+            // processing all the neighbors of v
+            for all neighbors w of v in Graph G
+                if w is not visited
+                    Q.enqueue(w) // Store w in Q to further visit its neighbor
+
+                    mark w as visited.
+
+Weighted Graphs
+- If all the edges in a graph are of the same weight, then BFS can also be used to find the minimum distance between the nodes in a graph.
+- Start from the source node to find the distance between the source node and node
+
+Time Complexity: O(V + E)
+- V = number of nodes
+- E = Number of edges
+
+Determining the level of each node in a tree :
+    vector<int> v[10]; // vector for maintaining adjacency list explained above
+    int level[10]; // to determine the level of each node
+    bool vis[10]; // Mark the node if visited
+    void bfs(int s) {
+        queue<int> q;
+        q.push(s);
+        level[s] = 0; // setting the level of the source node as 0
+        vis[s] = true;
+        while(!q.empty()) {
+            int p = q.front();
+            q.pop();
+            for(int i = 0; i < v[p].size(); i++) {
+                if(vis[v[p][i]] == false) {
+                    // setting the level of each node with an increment in the level of parent node
+                    level[v[p][i]] = level[p] + 1;
+                    q.push(v[p][i]);
+                    vis[v[p][i]] = true;
+                }
+            }
+        }
+    }
+
+Possibly a better implementation:
+
+void bfs (int start)
+{
+    deque <int > Q;     //Double-ended queue
+    Q.push_back( start); 
+    distance[ start ] = 0;       
+    while( !Q.empty ())
+    {
+        int v = Q.front( );
+        Q.pop_front(); 
+        for( int i = 0 ; i < edges[v].size(); i++)
+        {
+            /* if distance of neighbour of v from start node is greater than sum of distance of v from start node and 
+               edge weight between v and its neighbour (distance between v and its neighbour of v) ,then change it */  
+            if(distance[ edges[ v ][ i ].first ] > distance[ v ] + edges[ v ][ i ].second ) 
+            {
+                distance[ edges[ v ][ i ].first ] = distance[ v ] + edges[ v ][ i ].second;
+                /* if edge weight between v and its neighbour is 0 then push it to front of
+                   double ended queue else push it to back*/
+                if(edges[ v ][ i ].second == 0)
+                {
+                    Q.push_front( edges[ v ][ i ].first);
+                }
+                else
+                {
+                        Q.push_back( edges[ v ][ i ].first);
+                }
+            }
+        }
+    }
+}
