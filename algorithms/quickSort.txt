@@ -1,0 +1,46 @@
+Quick Sort
+
+A divide and conquer algorithm.
+- It picks an element as a pivot and parititons the given array around the picked pivot.
+
+Different implementations depending on how pivot is chosen:
+1. Always pick first element as pivot
+2. Always pick last element as pivot
+3. Pick a random element as pivot
+4. Pick median as pivot
+
+The key process of quick sort is partition().
+    - Given an array and an element x of array as pivot, put x at its correct position in sorted array and put all smaller elements (smaller than x) before x
+      and put all elements greater than x after x. All this is done in linear time.
+
+Pseudocode Recursive Quicksort:
+    ```c++
+        quickSort(arr[], low, high) {
+            if(low < high) {
+                pi = parition(arr, low, high);
+                quickSort(arr, low, pi - 1);
+                quickSort(arr, pi + 1, high);
+            }
+        }
+    ```
+
+Partition around last element pseudocode:
+```c++
+    partition(arr[], low, high) {
+        pivot = arr[high];
+        i = (low - 1);
+        for(j = low; j <= high - 1; j++) {
+            if(arr[j] < pivot) {
+                i++;
+                swap arr[i] and arr[j]
+            }
+        }
+        swap arr[i+1] and arr[high]
+        return (i + 1)
+    }
+```
+
+Time Complexity:
+    - Worst Case: O(n^2)
+    - Average Case: O(nlogn)
+    - Best Case: O(nlogn)
