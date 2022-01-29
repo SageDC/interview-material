@@ -1,0 +1,15 @@
+Binary Search
+
+Searching a sorted array by repeatedly dividing the search interval in half.
+    - Begin with an interval covering the whole array.
+        - If the value of the search key is less than the item in the middle of the inteval, narrow the interval to the lower half
+        - Otherwise, narrow it to the upper half.
+        - Repeatedly check until the value is found ot the interval is empty.
+
+Code in CPP file.
+
+Time complexity: O(logn)
+Mem: O(1), no extra memory used. O(logn) with recursive method.
+
+Using:
+    int mid = low + (high - low)/2 avoids bugs with large lists.
