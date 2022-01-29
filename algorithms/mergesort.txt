@@ -1,0 +1,25 @@
+Merge Sort
+
+A divide and conquer algorithm.
+- It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves.
+
+algorithm
+    MergeSort(arr[], low, high):
+        if high > low:
+            1. find the middle point to divide the array into two halves
+                middle m = low + (high-low)/2
+            2. Call mergeSort for first half:
+                mergeSort(arr, low, mid)
+            3. Call mergeSort for second hald:
+                call mergeSort(arr, mid+1, high)
+            4. Merge the two halves sorted in step 2 and 3
+                call merge(arr, low, mid, high)
+
+Time Complexity: O(nlogn)
+Mem used: O(n)
+
+Cons:
+    - Slower compared to other sorting algorithms for smaller tasks
+    - Requires an additional memory space of O(n) for the temporary array
+    - Goes through the whole process even if the array is sorted
+    
