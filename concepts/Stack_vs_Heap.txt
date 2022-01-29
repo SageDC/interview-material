@@ -1,0 +1,47 @@
+What is a Stack?
+- Special area of computer's memory which stores temporary variables created by a function.
+- Declared, Stored, and Initialized during runtime.
+- It is a temporary storage memory.
+- Memory automatically erased when task is complete.
+- Contains methods, local variables, and reference variables
+- Advantages:
+    1. Helps you to manafe the data in LIFO method which is not possible with LinkedList and array
+    2. When a function is called the local variables are stored in a stack, and it is automatically destroyed once returned
+    3. A stack is used when a variable is not used outside that function
+    4. It allows you to control how memory is allocated and deallocated
+    5. Stack automatically cleans up the object
+    6. Not easily corrupted
+    7. Vairables cannot be resized
+- Disadvantages:
+    1. Stack is very limited
+    2. Creating too many objects on the stack can increase the risk of stack overflow
+    3. Random access is not possible
+    4. Variable storage will be overwritten, which sometimes leads to undefined behavior of the funtion or program
+    5. The stack will fall outside of the memory area, which might lead to an abnormal termination
+
+What is Heap?
+- Stores global variables.
+- Supports dynamic memory allocation.
+- Not managed automatically, it is a free-floating region of memory that you need to free manually.
+- Advantages:
+    1. Heap helps you to find the greatest and minimum number
+    2. Garbage collection runs on the heap memory to free the memory used by the object
+    3. Heap method also used in the Priority Queue
+    4. It allows you to access variables globally
+    5. Heap doesn't have any limit on memory size
+- Disadvantages:
+    1. It can provide the maximum memory an OS can provide
+    2. It takes more time to compute
+    3. Memory Management is more complicated in heap memory as it is used globally
+    4. It takes too much time in execution compared to the stack
+
+Key Differences:
+- Stack is a linear data structure whereas Heap is a hierarchical data structure.
+- Stack memory will never become fragmented whereas Heap memory can become fragmented access
+  blocks of memory are first allocated and then freed.
+- Stack accesses local variables only while Heap allows you to access variables globally.
+- Stack variables can't be resized whereas Heap variables can be resized.
+- Stack memory is allocated in a contiguous block whereas Heap memory is allocated in any
+  random order.
+- Stack doesn't require to de-allocate variables whereas in Heap de-allocation is needed.
+- Stack allocation and deallocation are done by compiler instructions whereas Heap allocation and deallocation is done by the programmer.
