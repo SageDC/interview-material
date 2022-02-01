@@ -15,3 +15,4 @@ What do agile development?
 - work is done in small, but consumable, increments
 - weekly meetings in which we discuss what we got done, problems encountered, how we solved our problems, and what the next step is
 
+- Why should I hire you over any of the other candidates?
