@@ -1,0 +1,17 @@
+Inheritance - template class that helps prevent writing the same code. By following this principal, the base object can be used to create new objects and is reusable.
+Abstractions
+Encapsulations
+Polymorphism
+Interface class - how to implement and how to extend
+
+Thread and Multithread
+// What is a thread? 
+    Example: Chrome web browser, can have multiple tabs running concurrently.
+// What is multithreading? - similar to a thread but instead is multiple threads on the same process
+    // Deadlock - two computer programs sharing the same resource effectively preventing each other from accessing the resource.
+
+What do agile development?
+- iterative approach to project management and software development
+- work is done in small, but consumable, increments
+- weekly meetings in which we discuss what we got done, problems encountered, how we solved our problems, and what the next step is
+
