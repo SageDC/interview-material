@@ -100,5 +100,6 @@ int main() {
     cout << endl;
     removeDuplicates(&head);
     printList(head);
+    int* i = 0;
     return 0;
 }
